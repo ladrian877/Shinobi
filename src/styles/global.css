@@ -1,0 +1,361 @@
+@import "tailwindcss";
+
+:root {
+  --system-color-light: oklab(100% 0 0);
+  --system-color-dark: oklab(0% 0 0);
+  --system-color-gray-100: color-mix(
+    in oklab,
+    var(--system-color-light) 35%,
+    var(--system-color-dark) 65%
+  );
+  --system-color-gray-200: color-mix(
+    in oklab,
+    var(--system-color-light) 25%,
+    var(--system-color-dark) 75%
+  );
+  --system-color-gold: oklab(78.49% -0.02 0.07);
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  inline-size: 100dvw;
+  block-size: 100dvh;
+  image-rendering: auto;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: url("https://raw.githubusercontent.com/delvignefred/codepen-shinobi/main/dist/assets/kunai-a.png"), default;
+}
+
+/* Navigation wrapper */
+#navigation {
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+/* Main layout */
+main {
+  inline-size: 100%;
+  block-size: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--system-color-light);
+  animation: opening 1.2s ease-in;
+}
+
+/* Section */
+section {
+  inline-size: 50%;
+  block-size: 100%;
+  --h1-font-style: normal;
+  --h1-font-variant: normal;
+  --h1-font-weight: 600;
+  --h1-font-size: clamp(1.5rem, 3.8dvmin + 0.75rem, 3rem);
+  --h1-line-height: calc(var(--h1-font-size) * 1.5);
+  --h1-font-family: "Poppins", sans-serif;
+
+  --cite-font-style: normal;
+  --cite-font-variant: normal;
+  --cite-font-weight: 400;
+  --cite-font-size: clamp(1rem, 2.2dvmin + 0.75rem, 2rem);
+  --cite-line-height: calc(var(--cite-font-size) * 1.5);
+  --cite-font-family: "Zen Kaku Gothic New", sans-serif;
+  --cite-letter-spacing: 0.2ch;
+
+  overflow-x: hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  padding-inline: 10dvmin;
+  padding-block: 16dvmin 0dvmin;
+}
+
+section::-webkit-scrollbar {
+  display: none;
+}
+
+section h1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font: var(--h1-font-style) var(--h1-font-variant) var(--h1-font-weight) var(--h1-font-size) / var(--h1-line-height) var(--h1-font-family);
+  color: var(--system-color-gray-200);
+  padding-block: 0dvmin 2.4dvmin;
+}
+
+section h1 cite {
+  position: relative;
+  font: var(--cite-font-style) var(--cite-font-variant) var(--cite-font-weight) var(--cite-font-size) / var(--cite-line-height) var(--cite-font-family);
+  color: var(--system-color-gold);
+  font-optical-sizing: auto;
+  letter-spacing: var(--cite-letter-spacing);
+}
+
+article:last-of-type {
+  margin-block: 0 10dvmin;
+}
+
+article:has(details[open]) summary::after {
+  transform: rotate(var(--shuriken-rotation-angle));
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+}
+
+details {
+  --summary-font-style: normal;
+  --summary-font-variant: normal;
+  --summary-font-weight: 500;
+  --summary-font-size: clamp(1rem, 2.2dvmin + 0.75rem, 2rem);
+  --summary-line-height: calc(var(--summary-font-size) * 1.5);
+  --summary-font-family: "Chakra Petch", sans-serif;
+
+  --shuriken-transition-property: transform;
+  --shuriken-transition-duration: 0.5s;
+  --shuriken-timing-function: ease;
+  --shuriken-transition-delay: 0s;
+  --shuriken-transition-behavior: normal;
+  --shuriken-rotation-angle: 225deg;
+
+  --paragraph-font-style: normal;
+  --paragraph-font-variant: normal;
+  --paragraph-font-weight: 300;
+  --paragraph-font-size: clamp(0.8rem, 1.1dvmin + 0.75rem, 1.5rem);
+  --paragraph-line-height: calc(var(--paragraph-font-size) * 1.5);
+  --paragraph-font-family: "Poppins", sans-serif;
+
+  border-top: 0.1dvmin solid var(--system-color-dark);
+}
+
+details > p {
+  font: var(--paragraph-font-style) var(--paragraph-font-variant) var(--paragraph-font-weight) var(--paragraph-font-size) / var(--paragraph-line-height) var(--paragraph-font-family);
+  color: var(--system-color-gray-100);
+  text-align: start;
+  word-break: keep-all;
+  hyphens: none;
+  text-wrap: pretty;
+  white-space: normal;
+  overflow-wrap: normal;
+  padding-inline: 0 5dvmin;
+  padding-block: 1.4dvmin 2.8dvmin;
+}
+
+details summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  letter-spacing: 0.03ch;
+  font: var(--summary-font-style) var(--summary-font-variant) var(--summary-font-weight) var(--summary-font-size) / var(--summary-line-height) var(--summary-font-family);
+  color: var(--system-color-gray-200);
+  list-style: none;
+  animation: cursor-move 0.7s ease-in-out infinite;
+  padding-block: 1.4dvmin;
+}
+
+details summary::after {
+  content: url("data:image/svg+xml,%3C?xml version='1.0' encoding='utf-8'?%3E %3Csvg version='1.1' id='svg4237' xmlns:inkscape='http://www.inkscape.org/namespaces/inkscape' xmlns:cc='http://creativecommons.org/ns%23' xmlns:sodipodi='http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd' xmlns:dc='http://purl.org/dc/elements/1.1/' xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns%23' xmlns:svg='http://www.w3.org/2000/svg' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 573.4 573.4' style='enable-background:new 0 0 573.4 573.4;' xml:space='preserve'%3E %3Cstyle type='text/css'%3E .st0%7Bstroke:%23000000;%7D %3C/style%3E %3Cpath class='st0' d='M572.3,292l-112.5-34.8l-101.9-31.5c-1-1.1-2-2.2-3-3.3l-33.3-108.2L286.7,1.1l-34.5,113.3l-33.6,110.3 l-105,32.4L1.1,292l112.4,34.6L222,360.1l30.1,98.9l34.5,113.3l34.8-113.1l30.6-99.4l107.8-33.2L572.3,292z M230.4,289.3 c0-31.2,25.2-56.4,56.4-56.4c31.1,0,56.4,25.3,56.4,56.4c0,31.2-25.2,56.4-56.4,56.4C255.6,345.7,230.4,320.5,230.4,289.3z'/%3E %3C/svg%3E");
+  inline-size: clamp(1.5rem, 3vmin + 0.8rem, 2.5rem);
+  block-size: clamp(1.5rem, 3vmin + 0.8rem, 2.5rem);
+  line-height: 100%;
+  transition: var(--shuriken-transition-property) var(--shuriken-transition-duration) var(--shuriken-timing-function) var(--shuriken-transition-delay) var(--shuriken-transition-behavior);
+}
+
+/* Aside */
+aside {
+  inline-size: 50%;
+  block-size: 100%;
+  --smoke-animation-duration: 0.4s;
+  --smoke-animation-timing-function: ease-in;
+  --smoke-animation-fill-mode: forwards;
+}
+
+aside div {
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.main__aside__profil {
+  display: block;
+  background: image-set(
+    url("https://raw.githubusercontent.com/delvignefred/codepen-shinobi/main/dist/assets/profil.avif") 1x,
+    url("https://raw.githubusercontent.com/delvignefred/codepen-shinobi/main/dist/assets/profil-hd.avif") 2x
+  ) no-repeat 50% 100% / contain;
+}
+
+.main__aside__profil::after {
+  content: "";
+  inline-size: 50%;
+  block-size: 100%;
+  position: absolute;
+  mix-blend-mode: darken;
+  animation: smoke-animation-1 var(--smoke-animation-duration) var(--smoke-animation-timing-function) var(--smoke-animation-fill-mode);
+}
+
+.main__aside__skills {
+  display: none;
+  background: image-set(
+    url("https://raw.githubusercontent.com/delvignefred/codepen-shinobi/main/dist/assets/skills.avif") 1x,
+    url("https://raw.githubusercontent.com/delvignefred/codepen-shinobi/main/dist/assets/skills-hd.avif") 2x
+  ) no-repeat 50% 100% / contain;
+}
+
+.main__aside__skills::after {
+  content: "";
+  inline-size: 50%;
+  block-size: 100%;
+  position: absolute;
+  mix-blend-mode: darken;
+  animation: smoke-animation-2 var(--smoke-animation-duration) var(--smoke-animation-timing-function) var(--smoke-animation-fill-mode);
+}
+
+.main__aside__spells {
+  display: none;
+  background: image-set(
+    url("https://raw.githubusercontent.com/delvignefred/codepen-shinobi/main/dist/assets/spells.avif") 1x,
+    url("https://raw.githubusercontent.com/delvignefred/codepen-shinobi/main/dist/assets/spells-hd.avif") 2x
+  ) no-repeat 50% 100% / contain;
+}
+
+.main__aside__spells::after {
+  content: "";
+  inline-size: 50%;
+  block-size: 100%;
+  position: absolute;
+  mix-blend-mode: darken;
+  animation: smoke-animation-3 var(--smoke-animation-duration) var(--smoke-animation-timing-function) var(--smoke-animation-fill-mode);
+}
+
+/* Footer */
+footer {
+  inline-size: 8dvmin;
+  aspect-ratio: 9 / 13;
+  z-index: 99;
+  position: fixed;
+  inset: 0.5dvmin -2.4dvmin auto auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-flow: column nowrap;
+  animation: opening 1.2s ease-in;
+}
+
+footer a {
+  animation: cursor-move 0.7s ease-in-out infinite;
+}
+
+footer a svg {
+  inline-size: 50%;
+  aspect-ratio: 1;
+  fill: var(--system-color-dark);
+  stroke-width: 0;
+  opacity: 0.4;
+}
+
+footer a svg:hover {
+  opacity: 1;
+  fill: var(--system-color-gold);
+}
+
+footer a svg#social-linkedin-logo {
+  fill-rule: evenodd;
+}
+
+/* Animations */
+@keyframes opening {
+  from {
+    opacity: 0;
+    filter: grayscale(100%);
+  }
+  to {
+    opacity: 1;
+    filter: grayscale(0%);
+  }
+}
+
+@keyframes cursor-move {
+  from {
+    cursor: url("https://raw.githubusercontent.com/delvignefred/codepen-shinobi/main/dist/assets/kunai-a.png"), pointer;
+  }
+  to {
+    cursor: url("https://raw.githubusercontent.com/delvignefred/codepen-shinobi/main/dist/assets/kunai-b.png"), pointer;
+  }
+}
+
+@keyframes smoke-animation-1 {
+  0%   { background: url("https://raw.githubusercontent.com/delvignefred/codepen-shinobi/main/dist/assets/smoke-1.avif") no-repeat 50% 100% / cover; }
+  10%  { background: url("https://raw.githubusercontent.com/delvignefred/codepen-shinobi/main/dist/assets/smoke-2.avif") no-repeat 50% 100% / cover; }
+  20%  { background: url("https://raw.githubusercontent.com/delvignefred/codepen-shinobi/main/dist/assets/smoke-3.avif") no-repeat 50% 100% / cover; }
+  30%  { background: url("https://raw.githubusercontent.com/delvignefred/codepen-shinobi/main/dist/assets/smoke-4.avif") no-repeat 50% 100% / cover; }
+  40%  { background: url("https://raw.githubusercontent.com/delvignefred/codepen-shinobi/main/dist/assets/smoke-5.avif") no-repeat 50% 100% / cover; }
+  50%  { background: url("https://raw.githubusercontent.com/delvignefred/codepen-shinobi/main/dist/assets/smoke-6.avif") no-repeat 50% 100% / cover; }
+  60%  { background: url("https://raw.githubusercontent.com/delvignefred/codepen-shinobi/main/dist/assets/smoke-7.avif") no-repeat 50% 100% / cover; }
+  70%  { background: url("https://raw.githubusercontent.com/delvignefred/codepen-shinobi/main/dist/assets/smoke-8.avif") no-repeat 50% 100% / cover; }
+  80%, 90%, 100% { background: url("https://raw.githubusercontent.com/delvignefred/codepen-shinobi/main/dist/assets/smoke-9.avif") no-repeat 50% 100% / cover; }
+}
+
+@keyframes smoke-animation-2 {
+  0%   { background: url("https://raw.githubusercontent.com/delvignefred/codepen-shinobi/main/dist/assets/smoke-1.avif") no-repeat 50% 100% / cover; }
+  10%  { background: url("https://raw.githubusercontent.com/delvignefred/codepen-shinobi/main/dist/assets/smoke-2.avif") no-repeat 50% 100% / cover; }
+  20%  { background: url("https://raw.githubusercontent.com/delvignefred/codepen-shinobi/main/dist/assets/smoke-3.avif") no-repeat 50% 100% / cover; }
+  30%  { background: url("https://raw.githubusercontent.com/delvignefred/codepen-shinobi/main/dist/assets/smoke-4.avif") no-repeat 50% 100% / cover; }
+  40%  { background: url("https://raw.githubusercontent.com/delvignefred/codepen-shinobi/main/dist/assets/smoke-5.avif") no-repeat 50% 100% / cover; }
+  50%  { background: url("https://raw.githubusercontent.com/delvignefred/codepen-shinobi/main/dist/assets/smoke-6.avif") no-repeat 50% 100% / cover; }
+  60%  { background: url("https://raw.githubusercontent.com/delvignefred/codepen-shinobi/main/dist/assets/smoke-7.avif") no-repeat 50% 100% / cover; }
+  70%  { background: url("https://raw.githubusercontent.com/delvignefred/codepen-shinobi/main/dist/assets/smoke-8.avif") no-repeat 50% 100% / cover; }
+  80%, 90%, 100% { background: url("https://raw.githubusercontent.com/delvignefred/codepen-shinobi/main/dist/assets/smoke-9.avif") no-repeat 50% 100% / cover; }
+}
+
+@keyframes smoke-animation-3 {
+  0%   { background: url("https://raw.githubusercontent.com/delvignefred/codepen-shinobi/main/dist/assets/smoke-1.avif") no-repeat 50% 100% / cover; }
+  10%  { background: url("https://raw.githubusercontent.com/delvignefred/codepen-shinobi/main/dist/assets/smoke-2.avif") no-repeat 50% 100% / cover; }
+  20%  { background: url("https://raw.githubusercontent.com/delvignefred/codepen-shinobi/main/dist/assets/smoke-3.avif") no-repeat 50% 100% / cover; }
+  30%  { background: url("https://raw.githubusercontent.com/delvignefred/codepen-shinobi/main/dist/assets/smoke-4.avif") no-repeat 50% 100% / cover; }
+  40%  { background: url("https://raw.githubusercontent.com/delvignefred/codepen-shinobi/main/dist/assets/smoke-5.avif") no-repeat 50% 100% / cover; }
+  50%  { background: url("https://raw.githubusercontent.com/delvignefred/codepen-shinobi/main/dist/assets/smoke-6.avif") no-repeat 50% 100% / cover; }
+  60%  { background: url("https://raw.githubusercontent.com/delvignefred/codepen-shinobi/main/dist/assets/smoke-7.avif") no-repeat 50% 100% / cover; }
+  70%  { background: url("https://raw.githubusercontent.com/delvignefred/codepen-shinobi/main/dist/assets/smoke-8.avif") no-repeat 50% 100% / cover; }
+  80%, 90%, 100% { background: url("https://raw.githubusercontent.com/delvignefred/codepen-shinobi/main/dist/assets/smoke-9.avif") no-repeat 50% 100% / cover; }
+}
+
+/* Media queries - portrait */
+@media (max-aspect-ratio: 4/3) {
+  section h1 cite {
+    writing-mode: vertical-lr;
+    inset: auto auto 2vmin auto;
+  }
+}
+
+@media (max-aspect-ratio: 9/13) {
+  section h1 cite {
+    writing-mode: vertical-lr;
+    inset: auto auto 2vmin auto;
+  }
+
+  aside .main__aside__profil {
+    background-size: 220% !important;
+    background-position: 30% 100% !important;
+  }
+
+  aside .main__aside__skills {
+    background-size: 280% !important;
+    background-position: 34% 100% !important;
+  }
+
+  aside .main__aside__spells {
+    background-size: 350% !important;
+    background-position: 46% 100% !important;
+  }
+}

@@ -1,17 +1,80 @@
 ---
-
+import '../styles/global.css';
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500&family=Poppins:wght@300;600&family=Zen+Kaku+Gothic+New:wght@300;400&display=swap" rel="stylesheet" />
+    <title>Shinobi 忍者</title>
+    <link rel="preload" as="image" imagesrcset="https://raw.githubusercontent.com/delvignefred/codepen-shinobi/main/dist/assets/skills.avif 1x, https://raw.githubusercontent.com/delvignefred/codepen-shinobi/main/dist/assets/skills-hd.avif 2x" fetchpriority="high" />
+    <link rel="preload" as="image" imagesrcset="https://raw.githubusercontent.com/delvignefred/codepen-shinobi/main/dist/assets/spells.avif 1x, https://raw.githubusercontent.com/delvignefred/codepen-shinobi/main/dist/assets/spells-hd.avif 2x" fetchpriority="high" />
+  </head>
+  <body>
+    <div id="navigation">
+      <main>
+        <section>
+          <h1>Shinobi<cite>忍者</cite></h1>
+          <article>
+            <details name="accordion" open>
+              <summary class="details__summary__profil">Profil</summary>
+              <p>A shadow spy and unparalleled warrior, he can work alone or as part of a team.<br /><br />Depending on the clan's
+                needs, he serves as an informant or can be deployed as an assassin.</p>
+            </details>
+          </article>
+          <article>
+            <details name="accordion">
+              <summary class="details__summary__skills">Skills</summary>
+              <p>A master of disguise and concealment, he can seamlessly blend into the population to gather the
+                information needed to complete his mission.
+                <br /><br />He also excels in ancestral martial arts, whose secrets he and his clan carefully preserve.
+              </p>
+            </details>
+          </article>
+          <article>
+            <details name="accordion">
+              <summary class="details__summary__spells">Spells</summary>
+              <p>Drawing inspiration from the esoteric doctrines of the Yamabushi, he practices occult techniques to gain
+                psychic and supernatural powers.</p>
+            </details>
+          </article>
+        </section>
+        <aside>
+          <div class="main__aside__profil"></div>
+          <div class="main__aside__skills"></div>
+          <div class="main__aside__spells"></div>
+        </aside>
+      </main>
+    </div>
+
+    <script>
+      const summaries = {
+        profil: document.querySelector<HTMLElement>(".details__summary__profil"),
+        skills: document.querySelector<HTMLElement>(".details__summary__skills"),
+        spells: document.querySelector<HTMLElement>(".details__summary__spells"),
+      };
+
+      const images = {
+        profil: document.querySelector<HTMLElement>(".main__aside__profil"),
+        skills: document.querySelector<HTMLElement>(".main__aside__skills"),
+        spells: document.querySelector<HTMLElement>(".main__aside__spells"),
+      };
+
+      const handleClick = (type: string) => {
+        (Object.keys(images) as Array<keyof typeof images>).forEach((key) => {
+          const el = images[key];
+          if (el) el.style.display = key === type ? "block" : "none";
+        });
+      };
+
+      (Object.keys(summaries) as Array<keyof typeof summaries>).forEach((key) => {
+        summaries[key]?.addEventListener("click", () => handleClick(key));
+      });
+    </script>
+  </body>
 </html>
