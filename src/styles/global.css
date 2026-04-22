@@ -65,9 +65,9 @@ section {
   --h1-font-style: normal;
   --h1-font-variant: normal;
   --h1-font-weight: 600;
-  --h1-font-size: clamp(1.5rem, 3.8dvmin + 0.75rem, 3rem);
+  --h1-font-size: clamp(1.8rem, 4.2dvmin + 0.8rem, 3.4rem);
   --h1-line-height: calc(var(--h1-font-size) * 1.5);
-  --h1-font-family: "Poppins", sans-serif;
+  --h1-font-family: "Great Vibes", cursive;
 
   --cite-font-style: normal;
   --cite-font-variant: normal;
